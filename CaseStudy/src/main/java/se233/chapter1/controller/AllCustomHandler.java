@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.StackPane;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import se233.chapter1.Launcher;
 import se233.chapter1.model.character.BasedCharacter;
 import se233.chapter1.model.item.Armor;
@@ -16,7 +18,7 @@ import se233.chapter1.model.item.Weapon;
 import java.util.ArrayList;
 
 public class AllCustomHandler {
-
+    static Logger logger = LoggerFactory.getLogger(AllCustomHandler.class);
     // Handle character generation
     public static class GenCharacterHandler implements EventHandler<ActionEvent> {
         @Override
@@ -90,6 +92,7 @@ public class AllCustomHandler {
             dragComplete = true;
         }
         event.setDropCompleted(dragComplete);
+        logger.info("[Weapon to be equipped:{}][Drop complete:{}]", ((BasedEquipment)db.getContent(BasedEquipment.DATA_FORMAT)).getName(), dragComplete);
     }
 
     // onequipdone
